@@ -40,7 +40,7 @@ const Tabs = () => {
                 styles.text,
                 focused ? styles.textFocused : styles.textNotFocused,
               ]}>
-              Home
+              Anasayfa
             </Text>
           ),
           tabBarIcon: ({focused}) => (

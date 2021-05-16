@@ -74,7 +74,7 @@ const EventScreen = ({route, navigation}) => {
             letterSpacing: -0.5,
             color: '#332C34',
           }}>
-          The Pretty Reckless
+          Cem Adrian
         </Text>
 
         {/* Event Information */}
@@ -113,7 +113,7 @@ const EventScreen = ({route, navigation}) => {
                   fontSize: 18,
                   color: '#2B0C0D',
                 }}>
-                29
+                21
               </Text>
             </View>
 
@@ -130,7 +130,7 @@ const EventScreen = ({route, navigation}) => {
                   fontSize: 16,
                   color: '#2B0C0D',
                 }}>
-                Friday
+                Cuma
               </Text>
 
               {/* Time */}
@@ -141,7 +141,7 @@ const EventScreen = ({route, navigation}) => {
                   color: '#7C8298',
                   marginTop: 5,
                 }}>
-                10:00 PM
+                20:00
               </Text>
             </View>
           </View>
@@ -153,7 +153,7 @@ const EventScreen = ({route, navigation}) => {
               justifyContent: 'space-between',
               backgroundColor: '#F2ECF8',
               height: 47,
-              width: 168,
+              width: 145,
               borderRadius: 45,
               padding: 5,
             }}>
@@ -164,7 +164,7 @@ const EventScreen = ({route, navigation}) => {
                 fontSize: 12,
                 marginLeft: 10,
               }}>
-              Add To Callendar
+              Listeme Ekle
             </Text>
 
             <View
@@ -209,7 +209,7 @@ const EventScreen = ({route, navigation}) => {
                 fontSize: 16,
                 color: '#2B0C0D',
               }}>
-              Place
+              Mekan
             </Text>
 
             {/* Location Name */}
@@ -220,7 +220,7 @@ const EventScreen = ({route, navigation}) => {
                 color: '#7C8298',
                 marginTop: 5,
               }}>
-              Zorlu PSM - Turkcell Platinum Sahnesi,
+              HAYAL KAHVESİ BAHÇEŞEHİR
             </Text>
           </View>
         </View>
@@ -234,7 +234,7 @@ const EventScreen = ({route, navigation}) => {
             color: '#332C34',
             marginTop: 30,
           }}>
-          About
+          Hakkında
         </Text>
 
         {/* Event About Text */}
@@ -247,27 +247,22 @@ const EventScreen = ({route, navigation}) => {
             lineHeight: 25,
             letterSpacing: -0.2,
           }}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut orem
-          ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-          veniam, quis nostrud exercitation ullamco laboris nisi ut orem ipsum
-          dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi utorem ipsum dolor sit
-          amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-          labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-          exercitation ullamco laboris nisi utorem ipsum dolor sit amet,
-          consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-          labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-          exercitation ullamco laboris nisi utorem ipsum dolor sit amet,
-          consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-          labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-          exercitation ullamco laboris nisi utorem ipsum dolor sit amet,
-          consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-          labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-          exercitation ullamco laboris nisi ut
+          Müzikte sınırları, tarzları, kuralları dışlayan, kendini sadece “özgür
+          bir müzisyen” olarak tanımlayan Cem Adrian, sevenleriyle buluşmaya
+          devam ediyor.
+          {'\n'} {'\n'}
+          Konser rock orkestra eşliğinde gerçekleşecektir.
+          {'\n'} {'\n'}
+          Geçtiğimiz ocak ayının sonlarında unutulmaz türküleri yorumladığı yeni
+          albümü “Seçkiler 2”yi çıkartan Cem Adrian; Türkiye’nin dört bir
+          yanında ve yurt dışında konserlerine de devam ediyor!
+          {'\n'} {'\n'}
+          Cem Adrian; 10 yıldır, sadece çok renkli sesi değil, çok renkli müziği
+          ile yorumcu, besteci ve söz yazarı olarak müziğin çok farklı
+          dallarında çok farklı eserlere imza atıyor. Başarılı müzisyen aynı
+          zamanda, bölge ayırt etmeksizin Türkiye’nin her şehrinde, en fazla
+          konser veren canlı performans sanatçıları arasında ön sıralarda yer
+          alıyor.
         </Text>
       </ScrollView>
 
@@ -278,7 +273,7 @@ const EventScreen = ({route, navigation}) => {
           bottom: 0,
           left: 0,
           right: 0,
-          height: 105,
+          height: 95,
           backgroundColor: '#fff',
         }}>
         {/* Get a Ticket Button */}
@@ -289,7 +284,7 @@ const EventScreen = ({route, navigation}) => {
             left: 20,
             right: 20,
             backgroundColor: '#9B64FE',
-            height: 65,
+            height: 55,
             borderRadius: 65,
             alignItems: 'center',
             justifyContent: 'center',
@@ -302,7 +297,7 @@ const EventScreen = ({route, navigation}) => {
               letterSpacing: -0.5,
               color: '#fff',
             }}>
-            Get a Ticket
+            Bilet Al
           </Text>
         </TouchableOpacity>
       </View>

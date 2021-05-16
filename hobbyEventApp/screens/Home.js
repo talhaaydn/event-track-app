@@ -14,21 +14,27 @@ const HomeScreen = ({navigation}) => {
   const events = [
     {
       id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-      title: 'New Thread Quartet',
-      date: '27 OCT, 2020',
-      place: 'DAVID GREFFEN HALL',
+      title: 'Cem Adrian',
+      date: '21 MAY, 2021',
+      place: 'HAYAL KAHVESİ BAHÇEŞEHİR',
     },
     {
       id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-      title: 'New Thread Quartet',
-      date: '27 OCT, 2020',
-      place: 'DAVID GREFFEN HALL',
+      title: 'Cem Adrian',
+      date: '22 MAY, 2021',
+      place: 'HAYAL KAHVESİ ANTALYA',
     },
     {
       id: '58694a0f-3da1-471f-bd96-145571e29d72',
-      title: 'New Thread Quartet',
-      date: '27 OCT, 2020',
-      place: 'DAVID GREFFEN HALL',
+      title: 'Cem Adrian',
+      date: '23 MAY, 2021',
+      place: 'YENİ MAHALLE NAZIM HİKMET KM',
+    },
+    {
+      id: '58694a0f-30a1-471f-bd96-145571e29d72',
+      title: 'Cem Adrian',
+      date: '06 HAZ, 2021',
+      place: 'AVLU KONGRE VE KM',
     },
   ];
 
@@ -115,7 +121,7 @@ const HomeScreen = ({navigation}) => {
           marginBottom: 20,
           fontSize: 22,
         }}>
-        Nearby Concerts
+        Yaklaşan Etkinlikler
       </Text>
 
       {renderEventList()}
