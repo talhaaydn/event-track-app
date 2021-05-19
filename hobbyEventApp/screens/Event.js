@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   View,
   Image,
@@ -11,13 +11,24 @@ import {
 import {ChevronLeft, Plus, MapMarkerAltSolid} from '../components/icons';
 
 const EventScreen = ({route, navigation}) => {
-  return (
+  const [loading, setLoading] = useState(true);
+  const [event, setEvent] = useState(null);
+
+  useEffect(() => {
+    const {item} = route.params;
+    setEvent(item);
+    setLoading(false);
+  });
+
+  return loading ? (
+    <Text>Yükleniyor</Text>
+  ) : (
     <View style={{flex: 1}}>
       {/* Header */}
       <View>
         {/* Page Image */}
         <Image
-          source={require('../assets/images/cem-adrian.png')}
+          source={{uri: event.image_url}}
           style={{
             width: '100%',
             height: 250,
@@ -74,7 +85,7 @@ const EventScreen = ({route, navigation}) => {
             letterSpacing: -0.5,
             color: '#332C34',
           }}>
-          Cem Adrian
+          {event.title}
         </Text>
 
         {/* Event Information */}
@@ -219,8 +230,9 @@ const EventScreen = ({route, navigation}) => {
                 fontSize: 13,
                 color: '#7C8298',
                 marginTop: 5,
+                textTransform: 'uppercase',
               }}>
-              HAYAL KAHVESİ BAHÇEŞEHİR
+              {event.place}
             </Text>
           </View>
         </View>
@@ -247,22 +259,7 @@ const EventScreen = ({route, navigation}) => {
             lineHeight: 25,
             letterSpacing: -0.2,
           }}>
-          Müzikte sınırları, tarzları, kuralları dışlayan, kendini sadece “özgür
-          bir müzisyen” olarak tanımlayan Cem Adrian, sevenleriyle buluşmaya
-          devam ediyor.
-          {'\n'} {'\n'}
-          Konser rock orkestra eşliğinde gerçekleşecektir.
-          {'\n'} {'\n'}
-          Geçtiğimiz ocak ayının sonlarında unutulmaz türküleri yorumladığı yeni
-          albümü “Seçkiler 2”yi çıkartan Cem Adrian; Türkiye’nin dört bir
-          yanında ve yurt dışında konserlerine de devam ediyor!
-          {'\n'} {'\n'}
-          Cem Adrian; 10 yıldır, sadece çok renkli sesi değil, çok renkli müziği
-          ile yorumcu, besteci ve söz yazarı olarak müziğin çok farklı
-          dallarında çok farklı eserlere imza atıyor. Başarılı müzisyen aynı
-          zamanda, bölge ayırt etmeksizin Türkiye’nin her şehrinde, en fazla
-          konser veren canlı performans sanatçıları arasında ön sıralarda yer
-          alıyor.
+          {event.content}
         </Text>
       </ScrollView>
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   View,
   Text,
@@ -9,34 +9,21 @@ import {
 } from 'react-native';
 
 import {MapMarkerAltSolid} from '../components/icons';
+import axios from 'axios';
 
 const HomeScreen = ({navigation}) => {
-  const events = [
-    {
-      id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-      title: 'Cem Adrian',
-      date: '21 MAY, 2021',
-      place: 'HAYAL KAHVESİ BAHÇEŞEHİR',
-    },
-    {
-      id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-      title: 'Cem Adrian',
-      date: '22 MAY, 2021',
-      place: 'HAYAL KAHVESİ ANTALYA',
-    },
-    {
-      id: '58694a0f-3da1-471f-bd96-145571e29d72',
-      title: 'Cem Adrian',
-      date: '23 MAY, 2021',
-      place: 'YENİ MAHALLE NAZIM HİKMET KM',
-    },
-    {
-      id: '58694a0f-30a1-471f-bd96-145571e29d72',
-      title: 'Cem Adrian',
-      date: '06 HAZ, 2021',
-      place: 'AVLU KONGRE VE KM',
-    },
-  ];
+  const [events, setEvents] = useState([]);
+
+  useEffect(async () => {
+    getEvents();
+  }, []);
+
+  const getEvents = async () => {
+    const fetchedEvents = await axios('http://127.0.0.1:8080/api/event');
+    if (fetchedEvents.data.status == 200) {
+      setEvents(fetchedEvents.data.data);
+    }
+  };
 
   function renderEventList() {
     const renderItem = ({item}) => (
@@ -52,11 +39,9 @@ const HomeScreen = ({navigation}) => {
           marginBottom: 15,
         }}>
         <Image
-          // source={{
-          //   uri:
-          //     'https://cdn.dribbble.com/users/7073902/screenshots/15547226/media/3caaf2f04af87df5f7cecbc6790e9816.png?compress=1&resize=1600x1200',
-          // }}
-          source={require('../assets/images/cem-adrian.png')}
+          source={{
+            uri: item.image_url,
+          }}
           style={{width: 80, height: 100, borderRadius: 10}}
           resizeMode="cover"
         />
@@ -104,7 +89,7 @@ const HomeScreen = ({navigation}) => {
       <FlatList
         data={events}
         renderItem={renderItem}
-        keyExtractor={item => item.id}
+        keyExtractor={item => item._id}
         contentContainerStyle={{
           paddingHorizontal: 20,
         }}

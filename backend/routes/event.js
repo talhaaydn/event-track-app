@@ -1,5 +1,7 @@
 const express = require("express");
 const router = express.Router();
+const axios = require("axios");
+
 const Event = require("../models/Event");
 const Keyword = require("../models/Keyword");
 const User = require("../models/User");
@@ -70,7 +72,7 @@ router.get("/event-search", async (req, res) => {
 	// Python - Bot çalıştırıp ordan gelen etkinlik varsa anahtar kelimeyi veri tabanına kaydet.
 	// Daha sonra etkinlikleri veri tabanına kaydet.
 	else {
-		const events = DATA;
+		const events = await axios.get(`${process.env.SCRAPING_API_URL}scrap-events/${keyword}`);
 
 		if (events.length === 0) {
 			return res.json({ status: 404, message: `No event was found for the keyword ${keyword}.`, data: [] });
