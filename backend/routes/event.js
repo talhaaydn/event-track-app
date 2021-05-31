@@ -48,11 +48,12 @@ router.get("/event-search", async (req, res) => {
 	const keyword = req.query.keyword;
 
 	const searchedKeywordIsExist = await Keyword.findOne({ name: keyword });
-	const user = await User.findById(USER_ID).populate({ path: "events", name: { $ne: searchedKeywordIsExist._id } });
 
 	// Daha önce aranan anahtar kelime eklenmiş. Demekki aranan anahtar kelimeye bağlı etkinlikler var.
 	// Etkinlikleri bul.
 	if (searchedKeywordIsExist !== null) {
+		const user = await User.findById(USER_ID).populate("events", null, { keyword: searchedKeywordIsExist._id });
+
 		// Aranan anahtar kelimeye bağlı etkinlikler daha önce kullanıcıya eklendiyse doğrudan kullanıcıya eklenen etkinlikleri bul.
 		if (user.events.length > 0) {
 			return res.json({ status: 200, message: `Events found for the keyword ${keyword}.`, data: user.events });
@@ -72,11 +73,15 @@ router.get("/event-search", async (req, res) => {
 	// Python - Bot çalıştırıp ordan gelen etkinlik varsa anahtar kelimeyi veri tabanına kaydet.
 	// Daha sonra etkinlikleri veri tabanına kaydet.
 	else {
-		const events = await axios.get(`${process.env.SCRAPING_API_URL}scrap-events/${keyword}`);
+		// console.log(`${process.env.SCRAPING_API_URL}scrap-events/${keyword}`);
+		// console.log(encodeURI(`${process.env.SCRAPING_API_URL}scrap-events/${keyword}`));
+		const events = await axios.get(encodeURI(`${process.env.SCRAPING_API_URL}scrap-events/${keyword}`));
 
-		if (events.length === 0) {
+		if (events.data.length === 0) {
 			return res.json({ status: 404, message: `No event was found for the keyword ${keyword}.`, data: [] });
 		}
+
+		const user = await User.findById(USER_ID);
 
 		// New keyword created.
 		const newKeyword = new Keyword({ name: keyword });
@@ -86,7 +91,7 @@ router.get("/event-search", async (req, res) => {
 			return res.status(500).send(err);
 		}
 
-		for (event of events) {
+		for (event of events.data) {
 			// New keyword id added to each event.
 			event.keyword = newKeyword._id;
 
@@ -103,7 +108,7 @@ router.get("/event-search", async (req, res) => {
 		return res.json({
 			status: 200,
 			message: `New events have been created for the keyword ${keyword}.`,
-			data: events,
+			data: events.data,
 		});
 	}
 });

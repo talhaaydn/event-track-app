@@ -11,7 +11,6 @@ const EventSchema = Schema(
 		place: String,
 		city: String,
 		content: String,
-		users: [{ type: Schema.Types.ObjectId, ref: "User" }],
 	},
 	{ timestamps: true }
 );

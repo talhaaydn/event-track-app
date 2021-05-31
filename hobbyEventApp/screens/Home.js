@@ -5,14 +5,21 @@ import {
   SafeAreaView,
   FlatList,
   Image,
+  ActivityIndicator,
   TouchableOpacity,
 } from 'react-native';
 
 import {MapMarkerAltSolid} from '../components/icons';
 import axios from 'axios';
+import moment from 'moment';
+
+const emptyContent = () => {
+  return <Text>Henüz bir etkinlik eklenmedi. Lütfen arama yapın.</Text>;
+};
 
 const HomeScreen = ({navigation}) => {
   const [events, setEvents] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(async () => {
     getEvents();
@@ -23,6 +30,11 @@ const HomeScreen = ({navigation}) => {
     if (fetchedEvents.data.status == 200) {
       setEvents(fetchedEvents.data.data);
     }
+    setLoading(false);
+  };
+
+  const getDate = date => {
+    return moment(date.split('T')[0]).format('DD MMM, Y');
   };
 
   function renderEventList() {
@@ -46,15 +58,19 @@ const HomeScreen = ({navigation}) => {
           resizeMode="cover"
         />
         <View style={{flex: 1, marginLeft: 20}}>
-          <Text
-            style={{
-              fontFamily: 'Inter-Medium',
-              fontSize: 14,
-              color: '#FE9F6A',
-              letterSpacing: -0.5,
-            }}>
-            {item.date}
-          </Text>
+          {item.date != '' ? (
+            <Text
+              style={{
+                fontFamily: 'Inter-Medium',
+                fontSize: 14,
+                color: '#FE9F6A',
+                letterSpacing: -0.5,
+                textTransform: 'uppercase',
+              }}>
+              {getDate(item.date)}
+            </Text>
+          ) : null}
+
           <Text
             style={{
               fontFamily: 'Inter-Bold',
@@ -64,23 +80,26 @@ const HomeScreen = ({navigation}) => {
             }}>
             {item.title}
           </Text>
-          <View style={{flexDirection: 'row', alignItems: 'center'}}>
-            <MapMarkerAltSolid
-              width={14}
-              height={14}
-              fill={'#542AE7'}
-              style={{opacity: 0.8}}
-            />
-            <Text
-              style={{
-                fontFamily: 'Inter-Medium',
-                fontSize: 13,
-                color: '#B1B6D4',
-                marginLeft: 7,
-              }}>
-              {item.place}
-            </Text>
-          </View>
+          {item.place != '' ? (
+            <View style={{flexDirection: 'row', alignItems: 'center'}}>
+              <MapMarkerAltSolid
+                width={14}
+                height={14}
+                fill={'#542AE7'}
+                style={{opacity: 0.8}}
+              />
+              <Text
+                style={{
+                  fontFamily: 'Inter-Medium',
+                  fontSize: 13,
+                  color: '#B1B6D4',
+                  marginLeft: 7,
+                  textTransform: 'uppercase',
+                }}>
+                {item.place}
+              </Text>
+            </View>
+          ) : null}
         </View>
       </TouchableOpacity>
     );
@@ -93,6 +112,9 @@ const HomeScreen = ({navigation}) => {
         contentContainerStyle={{
           paddingHorizontal: 20,
         }}
+        onRefresh={getEvents}
+        refreshing={loading}
+        ListEmptyComponent={emptyContent}
       />
     );
   }
@@ -106,10 +128,16 @@ const HomeScreen = ({navigation}) => {
           marginBottom: 20,
           fontSize: 22,
         }}>
-        Yaklaşan Etkinlikler
+        Yaklaşan Etkinlikler {events.length > 0 ? `(${events.length})` : null}
       </Text>
 
-      {renderEventList()}
+      {loading ? (
+        <View style={{flex: 1, justifyContent: 'center'}}>
+          <ActivityIndicator size="large" color="#542AE7" />
+        </View>
+      ) : (
+        renderEventList()
+      )}
     </SafeAreaView>
   );
 };

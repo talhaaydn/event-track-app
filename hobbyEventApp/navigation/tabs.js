@@ -6,7 +6,7 @@ import {
 } from '@react-navigation/bottom-tabs';
 
 import HomeScreen from '../screens/Home';
-import EventScreen from '../screens/Event';
+import SearchScreen from '../screens/Search';
 
 import {Home, Search} from '../components/icons';
 
@@ -49,13 +49,13 @@ const Tabs = () => {
         }}
       />
 
-      {/* <Tab.Screen
+      <Tab.Screen
         name="Search"
-        component={EventScreen}
+        component={SearchScreen}
         options={{
           tabBarLabel: ({focused}) => (
             <Text style={[focused ? {color: '#542AE7'} : {color: '#D8DBE9'}]}>
-              Search
+              Etkinlik Ara
             </Text>
           ),
           tabBarIcon: ({focused}) => (
@@ -66,7 +66,7 @@ const Tabs = () => {
             />
           ),
         }}
-      /> */}
+      />
     </Tab.Navigator>
   );
 };

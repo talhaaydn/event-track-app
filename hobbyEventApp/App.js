@@ -4,6 +4,7 @@ import {NavigationContainer} from '@react-navigation/native';
 
 import HomeScreen from './screens/Home';
 import EventScreen from './screens/Event';
+import EventWebPage from './screens/EventWebPage';
 
 import Tabs from './navigation/tabs';
 
@@ -24,6 +25,15 @@ const App = () => {
         initialRouteName={'Home'}>
         <Stack.Screen name="Home" component={Tabs} />
         <Stack.Screen name="Event" component={EventScreen} />
+        <Stack.Screen
+          name="Event Detail"
+          component={EventWebPage}
+          options={{
+            headerShown: true,
+            title: 'Etkinlik Sayfası',
+            headerBackTitle: 'Etkinlik',
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

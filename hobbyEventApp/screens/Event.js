@@ -4,6 +4,7 @@ import {
   Image,
   Text,
   SafeAreaView,
+  ActivityIndicator,
   TouchableOpacity,
   ScrollView,
 } from 'react-native';
@@ -21,7 +22,9 @@ const EventScreen = ({route, navigation}) => {
   });
 
   return loading ? (
-    <Text>Yükleniyor</Text>
+    <View style={{flex: 1, justifyContent: 'center'}}>
+      <ActivityIndicator size="large" color="#542AE7" />
+    </View>
   ) : (
     <View style={{flex: 1}}>
       {/* Header */}
@@ -157,7 +160,7 @@ const EventScreen = ({route, navigation}) => {
             </View>
           </View>
           {/* Add Callendar Button */}
-          <TouchableOpacity
+          {/* <TouchableOpacity
             style={{
               flexDirection: 'row',
               alignItems: 'center',
@@ -189,7 +192,7 @@ const EventScreen = ({route, navigation}) => {
               }}>
               <Plus stroke={'#fff'} />
             </View>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
 
         {/* Location */}
@@ -275,6 +278,9 @@ const EventScreen = ({route, navigation}) => {
         }}>
         {/* Get a Ticket Button */}
         <TouchableOpacity
+          onPress={() => {
+            navigation.navigate('Event Detail', {page_url: event.page_url});
+          }}
           style={{
             position: 'absolute',
             bottom: 20,

@@ -7,7 +7,7 @@ const UserSchema = Schema({
 	email: String,
 	password: String,
 	events: [{ type: Schema.Types.ObjectId, ref: "Event" }],
-	selected_events: [{ type: Schema.Types.ObjectId, ref: "Event" }],
+	// selected_events: [{ type: Schema.Types.ObjectId, ref: "Event" }],
 });
 
 module.exports = mongoose.model("User", UserSchema);
