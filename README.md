@@ -13,7 +13,10 @@ Hazırladığım proje 4 yapıdan oluşuyor. Bunlar;
 
 Bu yapılar arası iletişim aşağıdaki şekilde belirtildiği gibi olmaktadır.
 
-![Software Architecture](readme-images/software-architecture.png)
+<div align="center" width="100%"> 
+    <img width="60%" src="readme-images/software-architecture.png"> 
+    <p>Yazılım Mimarisi</p>
+</div>
 
 ## Mobil Uygulama Geliştirme Süreci
 
@@ -29,17 +32,17 @@ Bir mobil uygulama projesi geliştirdiğim için ya native ya da hibrit uygulama
 Aşağıdaki görsellerde tasarladığım sayfaları inceleyebilirsiniz.
 
 <div align="center" width="100%"> 
-    <img width="40%" src="readme-images/home-page.png"> 
+    <img width="30%" src="readme-images/home-page.png"> 
     <p>Anasayfa</p>
 </div>
 
 <div align="center" width="100%"> 
-    <img width="40%" src="readme-images/search-page.png"> 
+    <img width="30%" src="readme-images/search-page.png"> 
     <p>Etkinlik Arama Sayfası</p>
 </div>
 
 <div align="center" width="100%"> 
-    <img width="40%" src="readme-images/event-detail-page.png"> 
+    <img width="30%" src="readme-images/event-detail-page.png"> 
     <p>Etkinlik Detay Sayfası</p>
 </div>
 
@@ -48,7 +51,7 @@ Aşağıdaki görsellerde tasarladığım sayfaları inceleyebilirsiniz.
 Veritabanı tercihini yaparken önümde iki seçenek vardı. Bunlardan ilki MySQL gibi relational olan bir veritabanı seçmek, ikincisi ise MongoDB gibi noSQL bir veritabanı seçmek. Daha önceki projelerimde MySQL veritabanını çok kullandığım için bu projede kendimi daha çok geliştirmek, yeni bir şeyler öğrenmek ve daha hızlı çalışan bir veritabanı ile çalışmak istediğim için mongoDB kullanmayı tercih ettim.
 
 <div align="center" width="100%"> 
-    <img width="80%" src="readme-images/database.png"> 
+    <img width="60%" src="readme-images/database.png"> 
     <p>Etkinlik Detay Sayfası</p>
 </div>
 
